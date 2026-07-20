@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VISVIN DESIGN — Digital Marketing for Dealerships, Manufacturers & Institutions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0F1115;
+    --surface:#171A21;
+    --surface-2:#1E222B;
+    --text:#EDEDED;
+    --muted:#8A8F98;
+    --accent:#C9FF3C;
+    --accent-2:#6E7BFF;
+    --line:#2A2E38;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.6;
+    overflow-x:hidden;
+  }
+  h1,h2,h3{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-0.02em;}
+  .mono{font-family:'IBM Plex Mono',monospace;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px;}
+  ::selection{background:var(--accent);color:#0F1115;}
+
+  /* Focus visibility */
+  a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+    outline:2px solid var(--accent); outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; scroll-behavior:auto !important;}
+  }
+
+  /* Nav */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(15,17,21,0.85);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{display:flex; align-items:center; justify-content:space-between; padding:18px 24px; max-width:1160px; margin:0 auto;}
+  .logo{font-family:'Space Grotesk',sans-serif; font-weight:700; font-size:20px; display:flex; align-items:center; gap:8px;}
+  .logo-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);box-shadow:0 0 12px var(--accent);}
+  .nav-links{display:flex; gap:32px; font-size:14px; color:var(--muted);}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{
+    background:var(--accent); color:#0F1115; padding:10px 20px; border-radius:4px;
+    font-weight:600; font-size:14px;
+  }
+  .menu-toggle{display:none; background:none; border:none; color:var(--text); font-size:24px; cursor:pointer;}
+
+  /* Hero */
+  .hero{
+    padding:100px 24px 80px;
+    position:relative;
+    border-bottom:1px solid var(--line);
+    overflow:hidden;
+  }
+  .hero-inner{max-width:1160px; margin:0 auto; position:relative; z-index:2;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--accent);
+    text-transform:uppercase; letter-spacing:0.12em; margin-bottom:20px; display:block;
+  }
+  .hero h1{
+    font-size:clamp(38px, 6.5vw, 76px); line-height:1.02; max-width:900px; margin-bottom:24px;
+  }
+  .hero h1 span{color:var(--muted);}
+  .hero p{font-size:18px; color:var(--muted); max-width:520px; margin-bottom:36px;}
+  .hero-actions{display:flex; gap:16px; flex-wrap:wrap;}
+  .btn-primary{
+    background:var(--accent); color:#0F1115; padding:14px 28px; border-radius:4px;
+    font-weight:600; font-size:15px; border:none; cursor:pointer; transition:transform .15s ease;
+  }
+  .btn-primary:hover{transform:translateY(-2px);}
+  .btn-secondary{
+    border:1px solid var(--line); padding:14px 28px; border-radius:4px; font-weight:500; font-size:15px;
+    transition:border-color .15s ease;
+  }
+  .btn-secondary:hover{border-color:var(--accent);}
+
+  /* Ticker - signature element */
+  .ticker-wrap{
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    background:var(--surface); overflow:hidden; white-space:nowrap; padding:16px 0;
+  }
+  .ticker{
+    display:inline-flex; gap:48px; animation:scroll 28s linear infinite;
+  }
+  .ticker span{
+    font-family:'IBM Plex Mono',monospace; font-size:14px; color:var(--muted); display:inline-flex; align-items:center; gap:10px;
+  }
+  .ticker span b{color:var(--accent); font-weight:500;}
+  @keyframes scroll{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* Section headers */
+  section{padding:90px 24px;}
+  .section-head{max-width:600px; margin-bottom:56px;}
+  .section-head .eyebrow{margin-bottom:14px;}
+  .section-head h2{font-size:clamp(28px,4vw,42px); margin-bottom:16px;}
+  .section-head p{color:var(--muted); font-size:16px;}
+
+  /* About */
+  .about{border-bottom:1px solid var(--line);}
+  .about-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start;}
+  .about-text p{color:var(--muted); font-size:16px; margin-bottom:20px;}
+  .stat-grid{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  .stat{border:1px solid var(--line); border-radius:6px; padding:24px; background:var(--surface);}
+  .stat .num{font-family:'Space Grotesk',sans-serif; font-size:36px; font-weight:700; color:var(--accent);}
+  .stat .label{font-size:13px; color:var(--muted); margin-top:6px;}
+
+  /* Services */
+  .services{background:var(--surface); border-bottom:1px solid var(--line);}
+  .service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
+  .service-card{background:var(--bg); padding:32px 28px; transition:background .2s ease;}
+  .service-card:hover{background:var(--surface-2);}
+  .service-card .tag{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent-2); display:block; margin-bottom:16px;}
+  .service-card h3{font-size:20px; margin-bottom:10px;}
+  .service-card p{font-size:14px; color:var(--muted);}
+
+  /* Gallery */
+  .gallery-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px;}
+  .gallery-item{
+    aspect-ratio:4/3; border-radius:6px; border:1px solid var(--line);
+    display:flex; align-items:flex-end; padding:18px; position:relative; overflow:hidden;
+    background:linear-gradient(135deg, var(--surface) 0%, var(--surface-2) 100%);
+  }
+  .gallery-item::before{
+    content:''; position:absolute; inset:0; opacity:0.5;
+    background:radial-gradient(circle at 30% 20%, var(--accent-glow,var(--accent-2)) 0%, transparent 60%);
+    opacity:0.15;
+  }
+  .gallery-item .g-label{position:relative; z-index:1; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--text);}
+  .gallery-item .g-cat{position:relative; z-index:1; font-size:11px; color:var(--accent); text-transform:uppercase; letter-spacing:0.08em; display:block; margin-bottom:6px;}
+
+  /* Contact */
+  .contact{border-bottom:1px solid var(--line);}
+  .contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px;}
+  .form-group{margin-bottom:20px;}
+  .form-group label{display:block; font-size:13px; color:var(--muted); margin-bottom:8px; font-family:'IBM Plex Mono',monospace;}
+  .form-group input, .form-group textarea{
+    width:100%; background:var(--surface); border:1px solid var(--line); border-radius:4px;
+    padding:13px 14px; color:var(--text); font-family:'Inter',sans-serif; font-size:15px;
+  }
+  .form-group input:focus, .form-group textarea:focus{border-color:var(--accent); outline:none;}
+  .form-group textarea{resize:vertical; min-height:110px;}
+  .contact-info{display:flex; flex-direction:column; gap:28px;}
+  .contact-info .item .label{font-size:13px; color:var(--muted); margin-bottom:6px; font-family:'IBM Plex Mono',monospace;}
+  .contact-info .item .value{font-size:18px;}
+
+  footer{padding:40px 24px; text-align:center; color:var(--muted); font-size:13px;}
+
+  @media (max-width:860px){
+    .nav-links{display:none;}
+    .about-grid, .contact-grid{grid-template-columns:1fr; gap:40px;}
+    .service-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:560px){
+    .gallery-grid{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr 1fr;}
+    section{padding:64px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo"><span class="logo-dot"></span>VISVIN DESIGN</div>
+    <div class="nav-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#industries">Industries</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#contact" class="nav-cta">Start a project</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="eyebrow">Digital Marketing Agency · Since 2019</span>
+    <h1>Marketing that <span>dealers, manufacturers</span><br>& institutions trust.</h1>
+    <p>VISVIN DESIGN builds and runs digital marketing for automobile dealerships, manufacturers, hospitals, schools and distributors — 200+ clients served across Rajasthan, Haryana, Gurugram, West Bengal, Assam and abroad.</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Get a free audit</a>
+      <a href="#services" class="btn-secondary">See what we do</a>
+    </div>
+  </div>
+</section>
+
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker">
+    <span><b>200+</b> customers served</span>
+    <span><b>2019</b> founded</span>
+    <span><b>6+</b> states covered</span>
+    <span><b>Global</b> clients served too</span>
+    <span><b>200+</b> customers served</span>
+    <span><b>2019</b> founded</span>
+    <span><b>6+</b> states covered</span>
+    <span><b>Global</b> clients served too</span>
+  </div>
+</div>
+
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="about-grid">
+      <div class="about-text">
+        <span class="eyebrow">About Us</span>
+        <h2 style="margin-bottom:20px;">Since 2019, marketing for businesses that build things</h2>
+        <p>VISVIN DESIGN is a digital marketing company working with automobile dealerships (Tata Motors, Hyundai, Kia, TVS, Honda), manufacturers, hospitals, schools, and distributors — not just startups and D2C brands.</p>
+        <p>We've served 200+ customers and even other digital marketing firms, with clients across Rajasthan, Haryana, Gurugram, West Bengal, Assam, and international projects abroad.</p>
+      </div>
+      <div class="stat-grid">
+        <div class="stat"><div class="num">200+</div><div class="label">Customers served</div></div>
+        <div class="stat"><div class="num">2019</div><div class="label">Founded</div></div>
+        <div class="stat"><div class="num">6+</div><div class="label">States covered</div></div>
+        <div class="stat"><div class="num">Global</div><div class="label">Clients served abroad</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Products / Services</span>
+      <h2>Everything your growth needs, nothing it doesn't</h2>
+      <p>Pick one service or hand us the whole funnel — we scope around your goals, not a fixed package.</p>
+    </div>
+  </div>
+  <div class="service-grid">
+    <div class="service-card">
+      <span class="tag mono">01 — SEARCH</span>
+      <h3>SEO</h3>
+      <p>Technical fixes, content strategy, and link building that move you up the page that actually gets clicked.</p>
+    </div>
+    <div class="service-card">
+      <span class="tag mono">02 — PAID</span>
+      <h3>Performance Ads</h3>
+      <p>Google, Meta, and Instagram campaigns managed daily and optimised toward cost-per-lead, not clicks.</p>
+    </div>
+    <div class="service-card">
+      <span class="tag mono">03 — SOCIAL</span>
+      <h3>Social Media</h3>
+      <p>Content calendars, reels, and community management that build an audience your ads can retarget.</p>
+    </div>
+    <div class="service-card">
+      <span class="tag mono">04 — CONTENT</span>
+      <h3>Content & Copy</h3>
+      <p>Blog posts, landing pages, and email sequences written to convert, backed by keyword research.</p>
+    </div>
+    <div class="service-card">
+      <span class="tag mono">05 — BRAND</span>
+      <h3>Brand Identity</h3>
+      <p>Logo, visual system, and messaging that make every touchpoint feel like the same company.</p>
+    </div>
+    <div class="service-card">
+      <span class="tag mono">06 — DATA</span>
+      <h3>Analytics & Reporting</h3>
+      <p>Dashboards that show exactly where leads come from and what each channel costs you.</p>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="eyebrow">Industries We Serve</span>
+      <h2>Real sectors, real showrooms and clinics</h2>
+      <p>Six years of running campaigns for businesses that sell and manufacture physical products and services.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item"><div><span class="g-cat">Automobile</span><span class="g-label">Tata Motors, Hyundai, Kia, TVS & Honda dealerships</span></div></div>
+      <div class="gallery-item"><div><span class="g-cat">Healthcare</span><span class="g-label">Hospitals & eye hospitals</span></div></div>
+      <div class="gallery-item"><div><span class="g-cat">Education</span><span class="g-label">Schools</span></div></div>
+      <div class="gallery-item"><div><span class="g-cat">Home & Appliances</span><span class="g-label">Water purifier & appliance manufacturers</span></div></div>
+      <div class="gallery-item"><div><span class="g-cat">Building Materials</span><span class="g-label">Plywood stores & sanitary distributors</span></div></div>
+      <div class="gallery-item"><div><span class="g-cat">Manufacturing</span><span class="g-label">Manufacturers across sectors</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h2 style="margin-bottom:16px;">Tell us about your business</h2>
+        <p style="color:var(--muted); margin-bottom:32px;">Fill the form and we'll get back within one business day with next steps — no automated sales calls.</p>
+        <form onsubmit="event.preventDefault(); this.querySelector('.form-success').style.display='block'; this.querySelector('button').style.display='none';">
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input id="name" type="text" required placeholder="Your name">
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" type="email" required placeholder="you@company.com">
+          </div>
+          <div class="form-group">
+            <label for="message">What do you need help with?</label>
+            <textarea id="message" required placeholder="Tell us about your business and goals"></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Send message</button>
+          <p class="form-success" style="display:none; color:var(--accent); margin-top:16px; font-size:14px;">Thanks — we'll be in touch within one business day.</p>
+        </form>
+      </div>
+      <div class="contact-info">
+        <div class="item"><div class="label mono">PHONE</div><div class="value">+91 96020 04737</div></div>
+        <div class="item"><div class="label mono">ADDRESS</div><div class="value">Ashish Kuttir, Outside Chandpole Gate, Sikar, Rajasthan 332001</div></div>
+        <div class="item"><div class="label mono">SERVING</div><div class="value">Rajasthan, Haryana, Gurugram, West Bengal, Assam & clients abroad</div></div>
+        <div class="item"><div class="label mono">HOURS</div><div class="value">Mon–Sat, 10am – 7pm IST</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 VISVIN DESIGN. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
